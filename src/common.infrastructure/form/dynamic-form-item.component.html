@@ -1,0 +1,37 @@
+<!-- <div [formGroup]="form">
+    <label [attr.for]="item.key">{{item.label}}</label>
+   
+    <div [ngSwitch]="item.controlType">
+   
+      <input *ngSwitchCase="'textbox'" [formControlName]="item.key"
+              [id]="item.key" [type]="item.type">
+   
+      <select [id]="item.key" *ngSwitchCase="'dropdown'" [formControlName]="item.key">
+        <option *ngFor="let opt of item.options" [value]="opt.key">{{opt.value}}</option>
+      </select>
+   
+    </div> 
+   
+    <div class="errorMessage" *ngIf="!isValid">{{item.label}} is required!</div>
+    <div *ngIf="form.controls[item.key].errors?.passValidator" class="error-message">1
+     {{form.controls[item.key].errors?.passValidator?.info}} 
+    </div>
+  </div> -->
+  <ion-item [formGroup]="form" [ngSwitch]="item.controlType">
+    <ion-input *ngSwitchCase="'textbox'" [formControlName]="item.key"  clearInput=true placeholder="请输入账号"
+            [id]="item.key" [type]="item.type"></ion-input>
+ 
+    <!-- <select [id]="item.key" *ngSwitchCase="'dropdown'" [formControlName]="item.key">
+      <option *ngFor="let opt of item.options" [value]="opt.key">{{opt.value}}</option>
+    </select> -->
+    <ion-select  *ngSwitchCase="'dropdown'"  interface="popover" [multiple]="item.multiple" [formControlName]="item.key" [id]="item.key" >
+      
+      <ion-option *ngFor="let opt of item.options" [value]="opt.key"  [selected]="opt.selected">{{opt.value}}</ion-option>
+    </ion-select>
+   
+  </ion-item>  
+  <div *ngIf="form.controls[item.key].hasError('required') && (form.controls[item.key].dirty || form.controls[item.key].touched)"  class="error-message">{{item.label}}不能为空</div> 
+  <div *ngIf="form.controls[item.key].errors?.passValidator && (form.controls[item.key].dirty || form.controls[item.key].touched)" class="error-message">
+   {{form.controls[item.key].errors?.passValidator?.info}} 
+  </div>
+  

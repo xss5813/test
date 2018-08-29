@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>登录</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding scroll="false">
+  <h2>房乐美微商城</h2>
+  <h2>店铺管理</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)" novalidate>
+      <ion-list inset>
+
+          <ion-item>
+            <ion-input clearInput=true type="text" placeholder="请输入账号"  [formControl]="account"></ion-input>
+            
+          </ion-item>
+
+          <div *ngIf="account.hasError('required') && (account.dirty || account.touched)" class="error-message">不能为空</div> 
+          <div *ngIf="account.hasError('minlength') && (account.dirty || account.touched)"  class="error-message">密码长度最少为六位</div>
+         <!--
+           自定义验证
+         -->
+          <div *ngIf="account.errors?.passValidator && (account.dirty || account.touched)" class="error-message">
+            {{account.errors?.passValidator.info}}
+          </div>
+          <ion-item>
+            <ion-input clearInput=true type="text" placeholder="请输入验证码" [formControl]="captcha"></ion-input>
+            <button   type="button" (click)="getCaptcha()" [disabled]="loadingCaptcha" item-end>
+                <ion-spinner *ngIf="loadingCaptcha"  name="ios-small"></ion-spinner>
+              获取验证码<div *ngIf="loadingCaptcha">{{count+'秒后可再次点击'}}</div></button>
+          </ion-item>
+          <div *ngIf="captcha.hasError('required') && (captcha.dirty || captcha.touched)" class="error-message">不能为空</div> 
+          <!-- [disabled]="loginForm.invalid" -->
+          <button ion-button block color="blue" type="submit"  >登录</button>  
+        </ion-list>
+    </form> 
+  
+
+
+  <app-hero-form></app-hero-form>
+  响应式:
+  <app-name-editor1></app-name-editor1>
+
+
+
+</ion-content>

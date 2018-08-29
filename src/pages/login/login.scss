@@ -1,0 +1,23 @@
+h2 {
+  color: blue;
+  text-align: center;
+}
+[padding] h2:first-child{
+    
+    @include remCalc(margin-top, 2);
+}
+h2:nth-child(2){
+
+    @include remCalc(margin-top, 0.75);
+}
+.list-ios[inset] .item-input-has-focus {
+  border-bottom: 1px solid blue;
+}
+
+
+.button-block-ios {
+  @include remCalc(margin-top, 2);
+}
+.error-message{
+  color: red;
+}

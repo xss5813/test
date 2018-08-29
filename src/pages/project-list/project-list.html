@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ProjectListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>project-list</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)" (ionPull)="doPulling($event)">
+        <ion-refresher-content 
+          pullingIcon="md-arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="刷新中...">
+        </ion-refresher-content>
+      </ion-refresher>
+  <ion-list >
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+        {{ item.Id }}     
+        {{ item.Name }}
+        
+    </button>  
+  </ion-list>
+  <button ion-button color="light" (click)="test()">test</button>
+  <ion-infinite-scroll  (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="{{loadingSpinner}}"
+      loadingText="{{loadingText}}">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

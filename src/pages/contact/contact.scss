@@ -1,0 +1,33 @@
+page-contact {
+
+    ion-list{
+
+        background-color: gray;
+        @include remCalc(padding-top, 0.01);
+    }
+    .list ion-list-header{
+    
+        
+        @include remCalc(margin-top, 1.5);
+        background-color: #fff;
+    }
+    
+    .list .item-block{
+        @include remCalc(border-bottom, 0.055);
+        border-bottom-style:solid;
+        border-bottom-color:  #c8c7cc;
+    }
+    .list .item-block .item-inner {
+        border-bottom: 0;
+    }
+    
+    
+    /*
+    checkbox选中样式
+    */
+    .checkbox-ios .checkbox-checked{
+        border-color: aqua;
+        background-color: aquamarine;
+    }
+}
+

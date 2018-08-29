@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      
+    </ion-title>
+  </ion-navbar>
+  <!-- <ion-toolbar no-border-top>
+    <ion-searchbar placeholder="Filter Items" (ionInput)="filterItems($event)"></ion-searchbar>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content padding>
+  <!-- <ion-searchbar placeholder="Filter Items with Cancel" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar> -->
+  <form action="javascript:return true">
+      <!-- <ion-item>
+      <ion-input mode="ios" [(ngModel)]="search" type="search"  placeholder="请搜索" [ngModelOptions]="{standalone: true}" (keyup)="onSearchKeyUp($event)"></ion-input>
+      </ion-item>  -->
+      <!-- <ion-input mode="ios" [(ngModel)]="search" type="text"  
+        placeholder="请搜索" [ngModelOptions]="{standalone: true}" (keyup)="onSearchKeyUp($event)"></ion-input> -->
+      <ion-searchbar placeholder="请输入" type="search" showCancelButton color="danger" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)"
+      (keyup)='onSearchKeyUp($event)' ></ion-searchbar>
+  </form>
+  <ion-list>
+    <button  ion-item *ngFor="let item of items" (click)="go()">
+      {{ item }}
+    </button >
+  </ion-list>
+</ion-content>

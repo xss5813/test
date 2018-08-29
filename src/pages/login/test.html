@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Hero</h1>
+  <form>
+    <div class="form-group">
+      <label for="name">name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #temp="ngModel" minlength="8">
+      <!-- <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="model.name" #temp="ngModel"> -->
+      <div *ngIf="temp.invalid && (temp.dirty || temp.touched)" class="alert alert-danger">
+
+        <div *ngIf="temp.errors.required">
+            name is required.
+        </div>
+        <div *ngIf="temp.errors.minlength">
+            name must be at least 8 characters long.
+        </div>
+        <div *ngIf="temp.errors.forbiddentemp">
+            name cannot be Bob.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="alterEgo">Alter Ego</label>
+      <input type="text" class="form-control" id="alterEgo">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+</div>
