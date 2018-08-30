@@ -52,3 +52,5 @@
         <string>App需要您的同意,才能访问相机</string>
     </edit-config>
   
+  // 安装ionic pro依赖
+  cordova plugin add cordova-plugin-ionic --save --variable APP_ID="abcd1234" --variable CHANNEL_NAME="Master" --variable UPDATE_METHOD="background"
