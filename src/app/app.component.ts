@@ -28,6 +28,7 @@ export class MyApp {
   
   async performManualUpdate() {
     const info = await Pro.deploy.getCurrentVersion()
+    confirm('version:'+info)
     console.log("version:"+info);
     const update = await Pro.deploy.checkForUpdate()
     if (update.available){
