@@ -66,22 +66,23 @@ export class AboutPage {
     const update = await Pro.deploy.checkForUpdate()
     if (update.available &&  confirm('发现新版本，是否更新？')){
       
-     Observable.concat([Observable.fromPromise(Pro.deploy.downloadUpdate(progress=>{
-      this.updatingText="当前进度:"+progress+"";
+    //  Observable.concat([Observable.fromPromise(Pro.deploy.downloadUpdate(progress=>{
+    //   this.updatingText="当前进度:"+progress+"";
 
-     })),Observable.fromPromise(Pro.deploy.extractUpdate((progress) => {
-      this.updatingText="当前进度:"+progress+"";
-      console.log(progress);
-    })),Observable.fromPromise(Pro.deploy.reloadApp())]).subscribe();
-      // await Pro.deploy.downloadUpdate((progress) => {
-      //   this.updatingText=progress+"";
-      //   console.log(progress);
-      // })
-      // await Pro.deploy.extractUpdate((progress) => {
-      //   this.updatingText=progress+"";
-      //   console.log(progress);
-      // })
-      // await Pro.deploy.reloadApp();
+    //  })),Observable.fromPromise(Pro.deploy.extractUpdate((progress) => {
+    //   this.updatingText="当前进度:"+progress+"";
+    //   console.log(progress);
+    // })),Observable.fromPromise(Pro.deploy.reloadApp())]).subscribe();
+      await Pro.deploy.downloadUpdate((progress) => {
+        this.updatingText=progress+"";
+        console.log(progress);
+      })
+      await Pro.deploy.extractUpdate((progress) => {
+        this.updatingText=progress+"";
+        console.log(progress);
+      })
+      this.updatingText="即将重启应用...";
+      await Pro.deploy.reloadApp();
     }
     else{
       alert('已经是最新版');
