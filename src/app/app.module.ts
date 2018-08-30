@@ -18,8 +18,9 @@ import {BaseService,baseServiceProvider} from '../business/base.service.factory'
 import { Pro } from '@ionic/pro';
 
 Pro.init('5dc8e651', {
-  appVersion: '0.0.2'
+  appVersion: '0.0.1'
 })
+
 @NgModule({
   declarations: [
     MyApp,

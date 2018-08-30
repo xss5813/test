@@ -13,7 +13,7 @@ export class CategoryPage {
   constructor(public navCtrl: NavController) {
 
   }
-
+  
   search(){
 
     this.navCtrl.push('SearchPage');

@@ -8,7 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
  */
 //import { TabsPage } from '../pages/tabs/tabs';
 //--------------------------------------------------------------
-
+import { Pro } from '@ionic/pro';
 @Component({
   templateUrl: 'app.html'
 })
@@ -21,6 +21,23 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      this.performManualUpdate();
     });
+
+  }
+  
+  async performManualUpdate() {
+    const info = await Pro.deploy.getCurrentVersion()
+    console.log("version:"+info);
+    const update = await Pro.deploy.checkForUpdate()
+    if (update.available){
+      await Pro.deploy.downloadUpdate((progress) => {
+        console.log(progress);
+      })
+      await Pro.deploy.extractUpdate((progress) => {
+        console.log(progress);
+      })
+      await Pro.deploy.reloadApp();
+    }
   }
 }
