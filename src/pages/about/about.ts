@@ -83,6 +83,9 @@ export class AboutPage {
       // })
       // await Pro.deploy.reloadApp();
     }
+    else{
+      alert('已经是最新版');
+    }
   }
   updatingText:string='';
 }
