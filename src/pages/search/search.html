@@ -17,7 +17,7 @@
       </ion-item>  -->
       <!-- <ion-input mode="ios" [(ngModel)]="search" type="text"  
         placeholder="请搜索" [ngModelOptions]="{standalone: true}" (keyup)="onSearchKeyUp($event)"></ion-input> -->
-      <ion-searchbar placeholder="请输入" type="search" showCancelButton color="danger" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)"
+      <ion-searchbar placeholder="请输入" type="search"  showCancelButton color="danger" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)"
       (keyup)='onSearchKeyUp($event)' ></ion-searchbar>
   </form>
   <ion-list>
