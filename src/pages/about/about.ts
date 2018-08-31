@@ -14,79 +14,81 @@ import { Observable } from 'rxjs';
 })
 export class AboutPage {
   path: string;
- 
-  constructor(private imagePickerService:ImagePickerService,private cameraService:CameraService,protected uploadService:UploadService,public navCtrl: NavController) { 
-    
+
+  constructor(private imagePickerService: ImagePickerService, private cameraService: CameraService, protected uploadService: UploadService, public navCtrl: NavController) {
+
   }
 
   /**
    * 打开摄像头
    */
   openCamera() {
-    
-      this.cameraService.openCamera().subscribe(res=>{
-        console.log(res);
-        this.path = res;
-      });
+
+    this.cameraService.openCamera().subscribe(res => {
+      console.log(res);
+      this.path = res;
+    });
   }
 
-  openPhoto(){
-   this.imagePickerService.openPhoto(true).subscribe(x=>{
-     this.path= x[x.length-1];
-   });
+  openPhoto() {
+    this.imagePickerService.openPhoto(true).subscribe(x => {
+      this.path = x[x.length - 1];
+    });
   }
   /**
    * 文件上传
    */
   upload() {
-    
-    this.uploadService.uploadSingle(this.path).subscribe(x=>{
+
+    this.uploadService.uploadSingle(this.path).subscribe(x => {
 
       this.path = x;
     })
-      
+
   }
 
-  form(){
+  form() {
 
     this.navCtrl.push('FormPage');
   }
-  
-  grid(res){
-    
+
+  grid(res) {
+
     this.navCtrl.push(`Grid${res}Page`)
   }
 
-  update(){
+  update() {
     this.performManualUpdate();
   }
   async performManualUpdate() {
     const info = await Pro.deploy.getCurrentVersion()
-    
-    const update = await Pro.deploy.checkForUpdate()
-    if (update.available &&  confirm('发现新版本，是否更新？')){
-      
-    //  Observable.concat([Observable.fromPromise(Pro.deploy.downloadUpdate(progress=>{
-    //   this.updatingText="当前进度:"+progress+"";
 
-    //  })),Observable.fromPromise(Pro.deploy.extractUpdate((progress) => {
-    //   this.updatingText="当前进度:"+progress+"";
-    //   console.log(progress);
-    // })),Observable.fromPromise(Pro.deploy.reloadApp())]).subscribe();
-      await Pro.deploy.downloadUpdate((progress) => {
-        this.updatingText=progress+"";
-        console.log(progress);
-      })
-      await Pro.deploy.extractUpdate((progress) => {
-        this.updatingText=progress+"";
-        console.log(progress);
-      })
-      this.updatingText="即将重启应用...";
-      await Pro.deploy.reloadApp();
+    const update = await Pro.deploy.checkForUpdate()
+    if (update.available) {
+
+      //  Observable.concat([Observable.fromPromise(Pro.deploy.downloadUpdate(progress=>{
+      //   this.updatingText="当前进度:"+progress+"";
+
+      //  })),Observable.fromPromise(Pro.deploy.extractUpdate((progress) => {
+      //   this.updatingText="当前进度:"+progress+"";
+      //   console.log(progress);
+      // })),Observable.fromPromise(Pro.deploy.reloadApp())]).subscribe();
+      if (confirm('发现新版本，是否更新？')) {
+        await Pro.deploy.downloadUpdate((progress) => {
+          this.updatingText = progress + "";
+          console.log(progress);
+        })
+        await Pro.deploy.extractUpdate((progress) => {
+          this.updatingText = progress + "";
+          console.log(progress);
+        })
+        this.updatingText = "即将重启应用...";
+        await Pro.deploy.reloadApp();
+      }
     }
-    else{
+    else {
       alert('已经是最新版');
     }
   }
-  updatingText:string='';
+  updatingText: string = '';
 }

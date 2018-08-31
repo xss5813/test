@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        房乐美微商城
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-list >
+            <span *ngFor="let item of items1">
+            <ion-list-header  >
+                    <ion-checkbox [(ngModel)]="item.selected"  (click)="updateCucumber(item)" color="dark"></ion-checkbox>
+                    <div item-content>{{item?.name}}</div>    
+            </ion-list-header>
+           
+            <ion-item *ngFor="let sub of item.child"> 
+                    <ion-checkbox [(ngModel)]="sub.selected" (click)="updateCucumber(sub)" color="dark"></ion-checkbox>
+                    <ion-label>{{sub?.name}}
+
+
+                    </ion-label>
+                    
+                  </ion-item>   
+               
+                </span>    
+    </ion-list>  
+  </ion-content>
+  <ion-footer>
+      
+    <button ion-button block color="light" (click)="search()">asjd</button>
+  </ion-footer>
