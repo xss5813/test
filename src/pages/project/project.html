@@ -131,7 +131,30 @@
       <button ion-button outline item-end>Uninstall</button>
     </ion-item>
   </ion-list>
-  
+  <ion-card>
+      <ion-card-header>
+        {{ safari1 }}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-segment [(ngModel)]="safari1" color="dark">
+          <ion-segment-button value="Bookmarks">
+            <ion-icon name="book"></ion-icon>
+          </ion-segment-button>
+          <ion-segment-button value="Reading List">
+            <ion-icon ios="ios-glasses-outline" md="md-glasses"></ion-icon>
+          </ion-segment-button>
+          <ion-segment-button value="Shared Links">
+            <ion-icon ios="ios-at-outline" md="md-at"></ion-icon>
+          </ion-segment-button>
+        </ion-segment>
+        <ion-list style="margin: 0" inset>
+          <button ion-item *ngFor="let sItem of getSafariItems(safari1)">
+            <ion-icon item-start [name]="sItem.icon" color="primary"></ion-icon>
+            {{ sItem.name }}
+          </button>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
   <ion-img width="20" height="20" src="assets/imgs/logo.png"></ion-img>
   
   <button ion-button color="light" (click)="login()">登录</button>

@@ -8,15 +8,22 @@ import { IonicPage } from 'ionic-angular';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
-  pepperoni:boolean;
-  test :number=23.1256;
+  pepperoni: boolean;
+  test: number = 23.1256;
   myParam = 'xss';
-  constructor(public navCtrl: NavController,public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
 
   }
 
-  search(){
-    this.openModalWithParams();
+  search() {
+    if (true) {
+      if (confirm('发现新版本，是否更新？')) {
+        this.openModalWithParams();
+      }
+    }
+    else {
+      alert('sdssd');
+    }
   }
 
   openBasicModal() {
