@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { Keyboard } from '@ionic-native/keyboard';
 import { ShoppingCartPage } from './shopping-cart';
 
 @NgModule({

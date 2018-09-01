@@ -16,14 +16,7 @@ export class ContactPage {
   }
 
   search() {
-    if (true) {
-      if (confirm('发现新版本，是否更新？')) {
-        this.openModalWithParams();
-      }
-    }
-    else {
-      alert('sdssd');
-    }
+    
   }
 
   openBasicModal() {
