@@ -15,7 +15,7 @@ export class BusyInterceptor implements HttpInterceptor {
   
   private loading:Loading;
   constructor(private loadingCtrl :LoadingController,public app: App,private injector:Injector){
-     
+    
   }
   get navController(): NavController {
     return this.app.getRootNav();
