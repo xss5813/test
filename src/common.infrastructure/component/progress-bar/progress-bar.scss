@@ -1,0 +1,25 @@
+page-progress-bar {
+    .progress-outer {
+         margin:             5px 0;
+        position: relative;
+        height: 4px;
+        display: block;
+        width: 100%;
+        background-color: map-get($colors, primary);
+        border-radius: 2px;
+        margin: 0.5rem 0 1rem 0;
+        overflow: hidden;
+
+    }
+ 
+    .progress-inner {
+        min-width: 15%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 5px;
+        border-radius: 10px;
+        
+        background-color:  lighten(map-get($colors, secondary), 35% );
+
+    }
+}
