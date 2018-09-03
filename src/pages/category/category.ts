@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
 @IonicPage()
 
@@ -10,13 +10,18 @@ import { IonicPage } from 'ionic-angular';
 export class CategoryPage {
   pepperoni:boolean;
   test :number=23.1256;
+  showParent:boolean = false;
   constructor(public navCtrl: NavController) {
 
+    
   }
-  
+  add(){
+    this.showParent=true;
+    }
   search(){
-
     this.navCtrl.push('SearchPage');
   }
+
+  
   
 }

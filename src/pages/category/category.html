@@ -10,4 +10,12 @@
     
     <button ion-button  color="light" (click)="search()">搜索</button>
   </ion-content>
+
+  <ion-footer>
+      <div *ngIf='showParent'>
+        <page-progress-bar   [(showChild)] ="showParent"   ></page-progress-bar>
+      </div>
+      
+        <button color="primary"  ion-button (click)="add()">Add</button>
+      </ion-footer>
   

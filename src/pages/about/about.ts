@@ -74,7 +74,7 @@ export class AboutPage {
       //   console.log(progress);
       // })),Observable.fromPromise(Pro.deploy.reloadApp())]).subscribe();
       if (confirm('发现新版本，是否更新？')) {
-        let loading = this.presentLoadingCustom();
+        this.showProgress = true;
         
         await Pro.deploy.downloadUpdate((progress) => {
           this.updatingText = progress + "";
@@ -82,10 +82,10 @@ export class AboutPage {
         })
         await Pro.deploy.extractUpdate((progress) => {
           this.updatingText = progress + "";
+          this.value = progress;
           console.log(progress);
         })
         this.updatingText = "即将重启应用...";
-        loading.dismiss();
         await Pro.deploy.reloadApp();
       }
     }
@@ -94,22 +94,6 @@ export class AboutPage {
     }
   }
   updatingText: string = '';
-  presentLoadingCustom() {
-    let loading = this.loadingCtrl.create({
-      
-      spinner: 'hide',
-      content: `<div class="cssload-square">                           ////////// this is a custom loading content with CSS styling
-             <div><div><div><div><div></div></div></div></div></div>
-             <div><div><div><div><div></div></div></div></div></div>
-              </div>
-            <div class="cssload-square cssload-two">
-             <div><div><div><div><div></div></div></div></div></div>
-             <div><div><div><div><div></div></div></div></div></div> 
-             </div><div class="text">Please  wait...</div>`,
-      cssClass: 'loader'
-      
-    });
-      loading.present();
-      return loading;
-   }
+  showProgress:boolean=false;
+  value:number=0;
 }

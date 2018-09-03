@@ -21,3 +21,9 @@
     <img [src]="path" />
   </div>
 </ion-content>
+
+<ion-footer>
+    <div *ngIf='showProgress'>
+        <progress  [value]='value' max='100'></progress>
+        </div>
+</ion-footer>

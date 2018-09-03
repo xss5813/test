@@ -13,7 +13,7 @@ import {MessageService} from '../common.infrastructure/services/message.service'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {BaseHTTPService} from '../business/base.service';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {BaseService,baseServiceProvider} from '../business/base.service.factory';
 import { Pro } from '@ionic/pro';
 
@@ -26,7 +26,7 @@ Pro.init('5dc8e651', {
     MyApp,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,BrowserAnimationsModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp,{ 
       mode:'ios', /*强制使用ios样式 */
