@@ -15,7 +15,7 @@ import { HTTP } from '@ionic-native/http';
 })
 
 export class LoginPage {
-
+  items=['1111','2222','333','4444','5555'];
   disabled= {};
   account: any;
   captcha: any;

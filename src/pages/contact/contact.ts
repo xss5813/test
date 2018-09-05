@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { Component, Renderer2, Renderer, ViewChild, NgZone } from '@angular/core';
+import { NavController, ModalController, Content } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
+
 @IonicPage()
 
 @Component({
@@ -8,15 +9,33 @@ import { IonicPage } from 'ionic-angular';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
-  pepperoni: boolean;
-  test: number = 23.1256;
+  @ViewChild(Content) content: Content;
+  private _testSegment: string;
+
+    get testSegment(): string {
+        return this._testSegment;
+    }
+
+    set testSegment(newName: string) {
+        
+      document.getElementById(newName).scrollIntoView(true);
+      
+      console.log(newName);
+    }
   myParam = 'xss';
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController,public zone: NgZone) {
 
   }
-
+  scrollHandler(event) {
+    console.log(`ScrollEvent: ${event}`)
+    this.zone.run(()=>{
+      // since scrollAmount is data-binded,
+      // the update needs to happen in zone
+      
+    })
+  }
   search() {
-    
+    this.openBasicModal();
   }
 
   openBasicModal() {

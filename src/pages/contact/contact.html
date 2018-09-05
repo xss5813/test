@@ -3,33 +3,34 @@
     <ion-title>
       房乐美微商城
     </ion-title>
+    
   </ion-navbar>
+  <ion-segment [(ngModel)]="testSegment" color="secondary">
+    <ion-segment-button value="camera">
+      <ion-icon name="camera"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button  value="bookmark">
+      <ion-icon name="bookmark"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>
-        <ion-checkbox [(ngModel)]="pepperoni" (ionChange)="updateCucumber()" color="dark"></ion-checkbox>
-      <div item-content>Follow us on Twitter</div>
-    </ion-list-header>
-    <ion-item>
-      <ion-checkbox [(ngModel)]="pepperoni" (ionChange)="updateCucumber()" color="dark"></ion-checkbox>
-      <ion-icon name="ionic" ></ion-icon> 
-      
-      <div item-content>afjsdfdjlsfjl</div> 
-    </ion-item>
-    <ion-item>
-        <ion-checkbox [(ngModel)]="pepperoni" (ionChange)="updateCucumber()" color="dark"></ion-checkbox>
-        <ion-icon name="ionic" item-start></ion-icon>
-        <ion-icon name="ionic" item-start></ion-icon>
-        <div item-content>{{test | number:'.2-2'}}</div> 
-      </ion-item>
-    <ion-list-header>Follow us on Twitter1</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-    
-    <button ion-button  color="light" (click)="search()">search</button>
-  </ion-list>
+<ion-content (ionScroll)="scrollHandler($event)">
+  
+  <div [ngSwitch]="testSegment">
+    <div style="height:500px" >
+      菜单1
+    </div>
+    <div  style="height:500px"  >
+      菜单二
+    </div>
+    <div  style="height:500px" id="bookmark" >
+      菜单三
+    </div>
+    <div  style="height:500px" id="camera" >
+      菜单四
+    </div>
+</div>  
+  <button ion-button  color="light" (click)="search()">search</button>
+  
 </ion-content>
