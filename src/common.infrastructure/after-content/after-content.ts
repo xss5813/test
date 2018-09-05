@@ -1,7 +1,7 @@
 import { Component, ContentChild, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import { NameEditorComponent } from '../../pages/login/test1';
-//@IonicPage()
+//@IonicPage() 开启编译后，会多生成一个 x.js 用于懒加载
 @Component({
   selector:'after-content',
   templateUrl: 'after-content.html'

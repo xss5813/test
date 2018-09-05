@@ -5,18 +5,19 @@ import {UserService} from '../../business/user.service';
 import {LocalHTTPService} from '../../assets/local.service';
 import { HeroFormComponent } from './test';
 import { NameEditorComponent } from './test1';
-import { AfterContentPage } from '../../common.infrastructure/after-content/after-content';
+import { AfterContentPageModule } from '../../common.infrastructure/after-content/after-content.module';
+
 
 @NgModule({
   declarations: [
-    LoginPage,AfterContentPage,
+    LoginPage,
     HeroFormComponent,NameEditorComponent
   ],
   imports: [
-    IonicPageModule.forChild(LoginPage),
+    IonicPageModule.forChild(LoginPage),AfterContentPageModule
   ],
   exports: [
-    LoginPage,AfterContentPage,
+    LoginPage,
     HeroFormComponent,NameEditorComponent
   ],
   providers:[UserService,LocalHTTPService]
