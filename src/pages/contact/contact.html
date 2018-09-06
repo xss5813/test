@@ -5,23 +5,21 @@
     </ion-title>
     
   </ion-navbar>
-  <ion-segment [(ngModel)]="testSegment" color="secondary">
-    <ion-segment-button value="camera">
-      <ion-icon name="camera"></ion-icon>
-    </ion-segment-button>
-    <ion-segment-button  value="bookmark">
-      <ion-icon name="bookmark"></ion-icon>
-    </ion-segment-button>
-  </ion-segment>
+  <ion-segment [(ngModel)]="testSegment"  color="secondary">
+      <ion-segment-button [value]="item" *ngFor="let item of items">
+          {{item}}
+        </ion-segment-button>
+       </ion-segment>
 </ion-header>
 
 <ion-content (ionScroll)="scrollHandler($event)">
   
-  <div [ngSwitch]="testSegment">
-    <div style="height:500px" >
+  <div [ngSwitch]="testSegment" >
+    <div style="height:500px" [id]="item" *ngFor="let item of items">{{item}}</div>
+    <!-- <div style="height:500px" id="bookmark1">
       菜单1
     </div>
-    <div  style="height:500px"  >
+    <div  style="height:500px"  id="bookmark2">
       菜单二
     </div>
     <div  style="height:500px" id="bookmark" >
@@ -29,7 +27,7 @@
     </div>
     <div  style="height:500px" id="camera" >
       菜单四
-    </div>
+    </div> -->
 </div>  
   <button ion-button  color="light" (click)="search()">search</button>
   
