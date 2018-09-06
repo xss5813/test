@@ -24,9 +24,11 @@ export class ContactPage implements OnInit{
 
     set testSegment(newName: string) {
         
-      this._testSegment = newName;
-      document.getElementById(newName).scrollIntoView(true);
-      console.log(newName);
+      if(this._testSegment!=newName){
+
+        this._testSegment = newName;
+        document.getElementById(newName).scrollIntoView(true);
+      }
     }
   myParam = 'xss';
 
@@ -45,9 +47,8 @@ export class ContactPage implements OnInit{
   }
   scrollHandler(event) {
     console.log(`ScrollEvent: ${event}`)
-
-    let name =this.items.find((value)=>this.map[value]==event.scrollTop);
-    if(name)
+    let temp = this.items.filter((value)=>this.map[value]<=event.scrollTop);
+    let name = temp[temp.length-1];
     this.testSegment=name;
     this.zone.run(()=>{
       // since scrollAmount is data-binded,
