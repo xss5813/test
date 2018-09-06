@@ -35,7 +35,8 @@ export class ContactPage {
     })
   }
   search() {
-    this.openBasicModal();
+    this.content.resize();
+    //this.openBasicModal();
   }
 
   openBasicModal() {
