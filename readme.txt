@@ -54,3 +54,12 @@
   
   // 安装ionic pro依赖
   cordova plugin add cordova-plugin-ionic --save --variable APP_ID="abcd1234" --variable CHANNEL_NAME="Master" --variable UPDATE_METHOD="background"
+  
+//自定义cordova插件
+ 1. $plugman create --name MyPlugin --plugin_id com.plugin.myPlugin --plugin_version 0.0.1
+
+2。$plugman platform add --platform_name ios
+
+3。 $ionic plugin add (你拿到的插件路径)。
+
+4。$sudo plugman createpackagejson (插件路径)
