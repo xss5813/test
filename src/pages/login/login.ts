@@ -6,8 +6,7 @@ import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms'
 import { HTTP } from '@ionic-native/http';
 //import { LocalHTTPService } from '../../assets/local.service';
 //import { BaseService, baseService } from '../../business/base.service.factory';
-
-
+declare let cordova: any;
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -41,9 +40,18 @@ export class LoginPage {
     });
     
     this.account = this.loginForm.controls['account1'];
-    
     this.captcha = this.loginForm.controls['captcha1'];
-  }
+  //   cordova.plugins.MyPlugin.showAlertWithTitle("传来的参数",
+  //   function (msg) {
+  //     alert('成功');
+  //     console.log(msg);
+      
+  //   },
+  //   function (msg) {
+  //     alert('失败');
+  //   });
+  
+   }
   /**
    * @description 验证码倒计时
    */
@@ -70,18 +78,21 @@ export class LoginPage {
     //   console.log(this.loginForm.errors);
     //   return;
     // }
-    this.navCtrl.push('TabsPage');
-    // this.userService.login(null,null,'manager','1',true,null).subscribe((res)=>{
-
-    //   //this.navCtrl.popAll();
-    //   this.navCtrl.push('TabsPage');
-
-    // },error=>{
-    //   this.navCtrl.push('TabsPage');
-    // }
-  //);
+    //this.navCtrl.push('TabsPage');
+    cordova.plugins.Myplugin.showAlertWithTitle("hello world",result=>this.go(),error=>alert(error));
+    
 
   }
 
-  
+  go(){
+    this.userService.login(null,null,'manager','1',true,null).subscribe((res)=>{
+
+      //this.navCtrl.popAll();
+      this.navCtrl.push('TabsPage');
+
+    },error=>{
+      this.navCtrl.push('TabsPage');
+    }
+  );
+  }
 }

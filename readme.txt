@@ -60,6 +60,6 @@
 
 2。$plugman platform add --platform_name ios
 
-3。 $ionic plugin add (你拿到的插件路径)。
+3。$sudo plugman createpackagejson (插件路径)
 
-4。$sudo plugman createpackagejson (插件路径)
+4。 $ionic plugin add (你拿到的插件路径)。
